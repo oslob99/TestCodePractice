@@ -1,5 +1,6 @@
 package sample.cafekiosk.unit;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.beverage.Ameriacano;
 import sample.cafekiosk.unit.beverage.Latte;
@@ -9,19 +10,22 @@ import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CafeKioskTest {
 
     @Test
-    void add_manual_test(){
+    void addManual(){
         CafeKiosk cafeKiosk = new CafeKiosk();
         cafeKiosk.add(new Ameriacano());
 
         System.out.println(">>> 담긴 음료 수 : " + cafeKiosk.getBeverages().size());
         System.out.println(">>> 담긴 음료 : " + cafeKiosk.getBeverages().get(0).getName());
+
+        assertThat(cafeKiosk.getBeverages().get(0).getName()).isEqualTo("Americano");
     }
 
+//    @DisplayName("음료 1개 추가 테스트")
+    @DisplayName("음료 1개 추가하면 주문 목록에 담긴다.")
     @Test
     void add(){
         CafeKiosk cafeKiosk = new CafeKiosk();
