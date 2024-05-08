@@ -1,5 +1,6 @@
-package sample.cafekiosk.spring.api.dto.request;
+package sample.cafekiosk.spring.api.service.order.request;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,12 +9,12 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class OrderCreateRequest {
+public class OrderCreateServiceRequest {
 
     private List<String> productNumbers;
 
     @Builder
-    private OrderCreateRequest(List<String> productNumbers){
+    private OrderCreateServiceRequest(List<String> productNumbers){
         this.productNumbers = productNumbers;
     }
 }

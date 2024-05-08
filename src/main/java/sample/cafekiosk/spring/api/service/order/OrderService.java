@@ -10,7 +10,8 @@ import sample.cafekiosk.spring.api.domain.product.ProductRepository;
 import sample.cafekiosk.spring.api.domain.product.ProductType;
 import sample.cafekiosk.spring.api.domain.stock.Stock;
 import sample.cafekiosk.spring.api.domain.stock.StockRepository;
-import sample.cafekiosk.spring.api.dto.request.OrderCreateRequest;
+import sample.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
+import sample.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk.spring.api.service.order.response.OrderResponse;
 
 import java.time.LocalDateTime;
@@ -34,7 +35,7 @@ public class OrderService {
      * 수량으로 우선권 혹은 시간으로 우선권
      */
 
-    public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registerDateTime){
+    public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registerDateTime){
         List<String> productNumbers = request.getProductNumbers();
         // Product
         List<Product> products = findProductsBy(productNumbers);

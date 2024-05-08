@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static sample.cafekiosk.spring.api.domain.product.ProductSellingStatus.SELLING;
 
 @DataJpaTest
