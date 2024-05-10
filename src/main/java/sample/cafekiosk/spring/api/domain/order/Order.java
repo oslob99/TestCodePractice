@@ -1,10 +1,7 @@
 package sample.cafekiosk.spring.api.domain.order;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import sample.cafekiosk.spring.api.domain.orderproduct.OrderProduct;
 import sample.cafekiosk.spring.api.domain.product.BaseEntity;
 import sample.cafekiosk.spring.api.domain.product.Product;
@@ -17,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "orders")
 @Entity
+@ToString(exclude = "orderProducts")
 public class Order extends BaseEntity {
 
     @Id
@@ -35,7 +33,7 @@ public class Order extends BaseEntity {
 
     @Builder
     private Order(List<Product> products, OrderStatus orderStatus, LocalDateTime registerDateTime) {
-        this.orderStatus = OrderStatus.INIT;
+        this.orderStatus = orderStatus;
         this.totalPrice = calculateTotalPrice(products);
         this.registerDateTime = registerDateTime;
         this.orderProducts = products.stream()

@@ -17,6 +17,7 @@ public class OrderStatisticsService {
   private final OrderRepository orderRepository;
   private final MailService mailService;
 
+
   public boolean sendOrderStatisticsMail(LocalDate orderDate, String email){
 
     // 해당 일자에 결제완료된 주문들을 가져와서
@@ -26,6 +27,7 @@ public class OrderStatisticsService {
         OrderStatus.PAYMENT_COMPLETED
     );
 
+    System.out.println("orders = " + orders);
     // 총 매출 합계를 계산하고
     int totalAmount = orders.stream()
         .mapToInt(Order::getTotalPrice)
